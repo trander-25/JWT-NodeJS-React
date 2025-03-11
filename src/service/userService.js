@@ -31,6 +31,23 @@ const createNewUser = (username, email, password) => {
   );
 };
 
+const getUserList = () => {
+  let users = [];
+  return connection.query(
+    "Select * from users",
+    function (err, results, fields) {
+      if (err) {
+        console.log(err);
+        return users;
+      }
+      users = results;
+      console.log("check result: ", results);
+      return users;
+    }
+  );
+};
+
 module.exports = {
   createNewUser,
+  getUserList,
 };
